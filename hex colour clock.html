@@ -1,0 +1,64 @@
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Grenze+Gotisch:wght@100;300;500;700;900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        head,
+        body {
+            margin: 0;
+            height: 0;
+            height: 100%;
+            width: 100%;
+        }
+
+        #bg {
+            height: 100vh;
+            width: 100vw;
+        }
+
+        #time {
+            position: absolute;
+            font-size: 4em;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Grenze Gotisch', cursive;
+            font-weight: 500;
+            color: white;
+        }
+    </style>
+</head>
+
+<body onload="refreshData()">
+    <div id="bg">
+        <div id="time"></div>
+    </div>
+    <script>
+        function refreshData() {
+            x = 1;  // x = seconds
+            var d = new Date()
+            var h = d.getHours();
+            var m = d.getMinutes();
+            var s = d.getSeconds();
+
+            if (h <= 9) { h = '0' + h };
+            if (m <= 9) { m = '0' + m };
+            if (s <= 9) { s = '0' + s };
+
+            var color = '#' + h + m + s;
+
+            document.getElementById('bg').style.backgroundColor = color;
+
+
+            document.getElementById('time').innerHTML = color;
+            
+
+
+            setTimeout(refreshData, x * 1000);
+        }
+    </script>
+</body>
+
+</html>
